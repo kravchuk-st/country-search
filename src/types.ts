@@ -28,3 +28,12 @@ export interface ApiCountry {
   flags?: { svg?: string; png?: string };
   maps?: { googleMaps?: string; openStreetMaps?: string };
 }
+
+export interface CountryCard {
+  name: string;
+  flagUrl: string;
+  capital?: string;
+  region: string;
+  population: number;
+  languages: string[];
+}
