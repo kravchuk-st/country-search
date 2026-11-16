@@ -17,6 +17,24 @@ const ERROR_MESSAGES: Record<SearchFailureState, string> = {
 
 const listOrDash = (items: string[]): string => (items.length > 0 ? items.join(', ') : NO_VALUE);
 
+const SCROLL_LOCK_CLASS = 'disable-scroll';
+
+function lockPageScroll(): void {
+  if (document.body.classList.contains(SCROLL_LOCK_CLASS)) {
+    return;
+  }
+
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  const currentPadding = parseFloat(getComputedStyle(document.body).paddingRight) || 0;
+  document.body.style.paddingRight = `${currentPadding + scrollbarWidth}px`;
+  document.body.classList.add(SCROLL_LOCK_CLASS);
+}
+
+function unlockPageScroll(): void {
+  document.body.style.paddingRight = '';
+  document.body.classList.remove(SCROLL_LOCK_CLASS);
+}
+
 function isHttpsUrl(url: string): boolean {
   try {
     return new URL(url).protocol === 'https:';
@@ -50,7 +68,11 @@ function createCard(country: ApiCountry, onOpen: (country: ApiCountry) => void):
 
 function createDetails(country: ApiCountry, onClose: () => void): HTMLElement {
   const details = mapCountryDetails(country);
-  const closeButton = el('button', { class: 'details__close', text: 'Close', attrs: { type: 'button' } });
+  const closeButton = el('button', {
+    class: 'details__close',
+    text: 'X',
+    attrs: { type: 'button', 'aria-label': 'Close' },
+  });
   closeButton.addEventListener('click', onClose);
 
   const row = (label: string, value: string): Node[] => [el('dt', { text: label }), el('dd', { text: value })];
@@ -85,10 +107,12 @@ export function createApp(controller: SearchController): HTMLElement {
 
   const openDetails = (country: ApiCountry): void => {
     dialog.replaceChildren(createDetails(country, () => dialog.close()));
+    lockPageScroll();
     dialog.showModal();
   };
 
-  // A click on the backdrop (the dialog element itself, outside its content) closes the dialog.
+  dialog.addEventListener('close', unlockPageScroll);
+
   dialog.addEventListener('click', (event) => {
     if (event.target === dialog) {
       dialog.close();
