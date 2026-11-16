@@ -1,3 +1,4 @@
-const title = document.createElement('h1');
-title.textContent = 'Country Search';
-document.body.append(title);
+import { createSearchController } from './searchController.js';
+import { createApp } from './view.js';
+
+document.body.append(createApp(createSearchController()));
