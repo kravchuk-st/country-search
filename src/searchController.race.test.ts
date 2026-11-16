@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { spainResponse } from './fixtures/spain';
-import { createSearchController, type SearchController, type SearchState } from './searchController';
-import { createPendingFetch, jsonResponse } from './testing/pendingFetch';
+import { spainResponse } from './fixtures/spain.js';
+import { createSearchController, type SearchController, type SearchState } from './searchController.js';
+import { createPendingFetch, jsonResponse } from './testing/pendingFetch.js';
 
 const DEBOUNCE_MS = 5;
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

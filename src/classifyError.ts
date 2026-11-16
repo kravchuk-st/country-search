@@ -1,4 +1,4 @@
-import { HttpError } from './httpError';
+import { HttpError } from './httpError.js';
 
 export type SearchFailure = 'cancelled' | 'timeout' | 'http' | 'network';
 

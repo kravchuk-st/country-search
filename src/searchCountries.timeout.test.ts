@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { spainResponse } from './fixtures/spain';
-import { searchCountries } from './searchCountries';
+import { spainResponse } from './fixtures/spain.js';
+import { searchCountries } from './searchCountries.js';
 
 const abortAwareFetch: typeof fetch = (_input, init) =>
   new Promise((_resolve, reject) => {

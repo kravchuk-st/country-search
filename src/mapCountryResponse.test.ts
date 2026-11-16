@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { spainResponse } from './fixtures/spain';
-import { mapCountryResponse } from './mapCountryResponse';
-import type { ApiCountry } from './types';
+import { spainResponse } from './fixtures/spain.js';
+import { mapCountryResponse } from './mapCountryResponse.js';
+import type { ApiCountry } from './types.js';
 
 const spain = spainResponse[0] as ApiCountry;
 const country = (overrides: Partial<ApiCountry> = {}): ApiCountry => ({ ...spain, ...overrides });

@@ -1,4 +1,4 @@
-import type { ApiCountry, CountryCard } from './types';
+import type { ApiCountry, CountryCard } from './types.js';
 
 const NO_VALUE = '—';
 

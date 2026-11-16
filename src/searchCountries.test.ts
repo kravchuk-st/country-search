@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { spainResponse } from './fixtures/spain';
-import { HttpError } from './httpError';
-import { searchCountries } from './searchCountries';
+import { spainResponse } from './fixtures/spain.js';
+import { HttpError } from './httpError.js';
+import { searchCountries } from './searchCountries.js';
 
 const jsonResponse = (body: unknown, status = 200): Response =>
   new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });

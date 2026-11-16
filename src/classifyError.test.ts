@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { classifyError } from './classifyError';
-import { HttpError } from './httpError';
+import { classifyError } from './classifyError.js';
+import { HttpError } from './httpError.js';
 
 describe('classifyError', () => {
   it('treats an AbortError as our own cancellation', () => {

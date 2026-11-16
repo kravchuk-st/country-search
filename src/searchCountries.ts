@@ -1,5 +1,5 @@
-import { HttpError } from './httpError';
-import type { ApiCountry } from './types';
+import { HttpError } from './httpError.js';
+import type { ApiCountry } from './types.js';
 
 const BASE_URL = 'https://countries.dev';
 

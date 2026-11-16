@@ -1,7 +1,7 @@
-import { classifyError, type SearchFailure } from './classifyError';
-import { debounce } from './debounce';
-import { searchCountries } from './searchCountries';
-import type { ApiCountry } from './types';
+import { classifyError, type SearchFailure } from './classifyError.js';
+import { debounce } from './debounce.js';
+import { searchCountries } from './searchCountries.js';
+import type { ApiCountry } from './types.js';
 
 export type SearchState =
   | { status: 'idle' }
