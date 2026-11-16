@@ -17,6 +17,7 @@ export interface ApiCountry {
   alpha2Code: string;
   alpha3Code: string;
   capital?: string;
+  demonym?: string;
   region: string;
   subregion?: string;
   population: number;
@@ -36,4 +37,11 @@ export interface CountryCard {
   region: string;
   population: number;
   languages: string[];
+}
+
+export interface CountryDetails extends CountryCard {
+  description: string;
+  area: number | null;
+  borders: string[];
+  currencies: string[];
 }
