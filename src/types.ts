@@ -33,7 +33,7 @@ export interface ApiCountry {
 export interface CountryCard {
   name: string;
   flagUrl: string;
-  capital?: string;
+  capital: string;
   region: string;
   population: number;
   languages: string[];
